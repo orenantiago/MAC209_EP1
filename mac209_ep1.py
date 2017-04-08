@@ -1,5 +1,20 @@
+# -*- coding: utf-8 -*-
 import numpy as np
+import matplotlib.pyplot as plt
 import csv
+
+def toolbox_graphic(filename):
+    t = []
+    resultante = []
+    first_line = True
+    for row in csv.reader(open(filename + '.csv', 'rt')):
+        #print(row)
+        if first_line == False:
+            t.append(float(row[0]))
+            resultante.append(float(row[3]))
+        first_line = False
+    plt.plot(t, resultante, 'b')
+    plt.show()
 
 
 #NÃO CALCULEI AS MEDIAS DE TODAS AS PESSOAS JUNTAS
@@ -8,7 +23,8 @@ def average_timestamps(filename):
     #ELE TAMBÉM QUER QUE USEMOS O TEMPO DO ACELEROMETRO
     data = []
     #just throw in all the cells of the file, row by row
-    for row in csv.reader(open(filename + '.csv', 'rb'))
+
+    for row in csv.reader(open(filename + '.csv', 'rb')):
         #FALTA TIRAR A MÉDIA ENTRE TODOS OS CRONOMETROS DA POSIÇÃO "i" E COLOCAR EM DATA[]
         #QUERO A POSIÇÃO 0 COM O TEMPO MÉDIO PRA IR DE 0M A 10M, A POSIÇÃO 2 COM O TEMPO MÉDIO PRA IR DE 10M A 20M...
         data.append(row)
@@ -23,7 +39,7 @@ def MRU_velocity(time):
         velocity_array.append(10/time_array[i])
     return velocity_array
 
-def MRU_plot(velocity):
+#def MRU_plot(velocity):
 
 
 def MRUV_velocity(time):
@@ -31,7 +47,7 @@ def MRUV_velocity(time):
     #que é a velocidade desenvolvida em cada posição (nao é constante)
     time_array = time
     velocity_array = []
-    #coloquei esse zero pra conseguir calcular delta_v para os primeiros 10m 
+    #coloquei esse zero pra conseguir calcular delta_v para os primeiros 10m
     velocty_array.append(0)
     for i in range(time_array.len()):
         velocity_array.append(10/time_array[i])
@@ -51,14 +67,9 @@ def MRUV_accel(velocity):
     return accel_array
 
 
-def MRUV_plot(accel):
+#def MRUV_plot(accel):
 
 def main():
     #chamar average timestamps e calcular MRU_velocity e MRU_plot pra cada pessoa
     #chamar average_timestamps e calcular MRUV_velocity e MRUV_accel pra cada pessoa
 main()
-
-
-
-
-
